@@ -9,25 +9,140 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
-
-
+const { error } = require("console");
+var employees = [];
 // CALLING FUNCTIONS FROM THE Employee.js//
+function managerInfo() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "managerName",
+        message: "Please Enter Manager Name:",
+      },
+      {
+        type: "input",
+        name: "managerID",
+        message: "Please Enter Manager ID:",
+      },
+      {
+        type: "input",
+        name: "managerEmail",
+        message: "Please Enter Manager Email:",
+      },
+      {
+        type: "input",
+        name: "managerOffice",
+        message: "Please Enter Manager Office Number:",
+      },
+    ])
+    .then((response) => {
+      console.log(response);
+      const manager = new Manager(response.managerName, response.managerID, response.managerEmail, response.managerOffice)
+console.log(manager)
+        employees.push(manager);
+      teamMembers();
+    });
+}
+function teamMembers() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "memberChoice",
+        message: "Which type of team member would you like to add?",
+        choices: [
+          "Engineer",
+          "Intern",
+          "I don't want to add any more team members",
+        ],
+      },
+    ])
+    .then((response) => {
+      console.log(response);
+      if(response.memberChoice === "I don't want to add any more team members"){
+           fs.writeFile(outputPath, render(employees), function(err){
+            if(err) throw err 
+            console.log("File Created Successfully")
+            console.log("Goodbye")
+            process.exit(0);
+           })
+        
+      }else if(response.memberChoice === "Engineer"){
+          engineerInfo();
+      } else{
+          internInfo();
+      }
+    });
+}
+//////////////////////////////////////////////////
+function engineerInfo() {
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "eName",
+          message: "Please Enter Manager Name:",
+        },
+        {
+          type: "input",
+          name: "eID",
+          message: "Please Enter Manager ID:",
+        },
+        {
+          type: "input",
+          name: "managerEmail",
+          message: "Please Enter Manager Email:",
+        },
+        {
+          type: "input",
+          name: "managerOffice",
+          message: "Please Enter Manager Office Number:",
+        },
+      ])
+      .then((response) => {
+        console.log(response);
+        const engineer = new Engineer(this.name, this.id, this.email, this.github);
+console.log(engineer)
+          employees.push(engineer);
+        teamMembers();
+      });
+  }
+/////////////////////////////////////////////////////////
+  function internInfo() {
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "managerName",
+          message: "Please Enter Manager Name:",
+        },
+        {
+          type: "input",
+          name: "managerID",
+          message: "Please Enter Manager ID:",
+        },
+        {
+          type: "input",
+          name: "managerEmail",
+          message: "Please Enter Manager Email:",
+        },
+        {
+          type: "input",
+          name: "managerOffice",
+          message: "Please Enter Manager Office Number:",
+        },
+      ])
+      .then((response) => {
+        console.log(response);
+        const intern = new Intern(this.name, this.id, this.email, this.school)
+console.log(intern)
+          employees.push(intern);
+        teamMembers();
+      });
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+managerInfo();
 
 
 
