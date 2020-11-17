@@ -114,23 +114,23 @@ console.log(engineer)
       .prompt([
         {
           type: "input",
-          name: "managerName",
-          message: "Please Enter Manager Name:",
+          name: "iName",
+          message: "Please Enter Intern Name:",
         },
         {
           type: "input",
-          name: "managerID",
-          message: "Please Enter Manager ID:",
+          name: "iID",
+          message: "Please Enter Intern ID:",
         },
         {
           type: "input",
-          name: "managerEmail",
-          message: "Please Enter Manager Email:",
+          name: "iEmail",
+          message: "Please Enter Intern Email:",
         },
         {
           type: "input",
-          name: "managerOffice",
-          message: "Please Enter Manager Office Number:",
+          name: "iSchool",
+          message: "Please Enter The Intern's School Name:",
         },
       ])
       .then((response) => {
