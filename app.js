@@ -102,7 +102,7 @@ function engineerInfo() {
       ])
       .then((response) => {
         console.log(response);
-        const engineer = new Engineer(this.name, this.id, this.email, this.github);
+        const engineer = new Engineer(response.eName, response.eID, response.eEmail, response.eGithub);
 console.log(engineer)
           employees.push(engineer);
         teamMembers();
