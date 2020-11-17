@@ -135,7 +135,7 @@ console.log(engineer)
       ])
       .then((response) => {
         console.log(response);
-        const intern = new Intern(this.name, this.id, this.email, this.school)
+        const intern = new Intern(response.iName, response.iID, response.iEmail, response.iSchool)
 console.log(intern)
           employees.push(intern);
         teamMembers();
