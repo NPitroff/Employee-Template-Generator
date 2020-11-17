@@ -82,22 +82,22 @@ function engineerInfo() {
         {
           type: "input",
           name: "eName",
-          message: "Please Enter Manager Name:",
+          message: "Please Enter Engineer Name:",
         },
         {
           type: "input",
           name: "eID",
-          message: "Please Enter Manager ID:",
+          message: "Please Enter Engineer ID:",
         },
         {
           type: "input",
-          name: "managerEmail",
-          message: "Please Enter Manager Email:",
+          name: "eEmail",
+          message: "Please Enter Engineer Email:",
         },
         {
           type: "input",
-          name: "managerOffice",
-          message: "Please Enter Manager Office Number:",
+          name: "eGithub",
+          message: "Please Link Engineers Github:",
         },
       ])
       .then((response) => {
